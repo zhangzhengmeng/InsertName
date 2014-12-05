@@ -5,6 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import jsoup.Actions;
+import jsoup.Cinema;
+
+
 /**
  * Helper class for providing sample content for user interfaces created by
  * Android template wizards.
@@ -25,9 +29,13 @@ public class DummyContent {
 
     static {
         // Add 3 sample items.
-        addItem(new DummyItem("1", "Cinema 1", "Cinema 1 films" ));
-        addItem(new DummyItem("2", "Cinema 2", "Cinema 1 films"));
-        addItem(new DummyItem("3", "Cinema 3", "Cinema 1 films"));
+        Actions a = new Actions();
+        String ville = "Grenoble";
+        List<Cinema> cf = new ArrayList<Cinema>(a.getCinemas(ville));
+        for (int i = 0; i < cf.size(); i++) {
+            addItem(new DummyItem(String.valueOf(i), cf.get(i).getName(), cf.get(i).getDescription()));
+            cf.get(i).afficher();
+        }
     }
 
     private static void addItem(DummyItem item) {

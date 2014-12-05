@@ -18,7 +18,7 @@ public class Main {
 		//for (int i = 0; i < cf.size(); i++) {
 		//	cf.get(i).afficher();
 		//}
-		List<Horraire> cf = new ArrayList<Horraire>(a.getCinema(ville, film));
+		List<Cinema> cf = new ArrayList<Cinema>(a.getCinemas(ville));
 		for (int i = 0; i < cf.size(); i++) {
 			cf.get(i).afficher();
 		}
