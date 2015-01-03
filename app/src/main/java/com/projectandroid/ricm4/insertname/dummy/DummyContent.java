@@ -7,6 +7,7 @@ import java.util.Map;
 
 import jsoup.Actions;
 import jsoup.Cinema;
+import jsoup.Horraire;
 
 
 /**
@@ -27,9 +28,9 @@ public class DummyContent {
      */
     public static Map<String, DummyItem> ITEM_MAP = new HashMap<String, DummyItem>();
 
-    private static List<Cinema> addInformation(String ville) {
+    private static List<Horraire> addInformation(String ville) {
         Actions a = new Actions();
-        List<Cinema> cf = new ArrayList<Cinema>(a.getCinemas(ville));
+        List<Horraire> cf = new ArrayList<Horraire>(a.getCinema(ville, "Hunger Games"));
         /*for (int i = 0; i < cf.size(); i++) {
             System.out.println("zbra\n");
             addItem(new DummyItem(String.valueOf(i), cf.get(i).getName(), cf.get(i).getDescription()));
@@ -45,9 +46,9 @@ public class DummyContent {
         addItem(new DummyItem("2", "Item 2","d2"));
         addItem(new DummyItem("3", "Item 3","d3"));
         */
-        List<Cinema> cf = addInformation("Grenoble");
+        List<Horraire> cf = addInformation("Grenoble");
         for (int i = 0; i < cf.size(); i++) {
-            addItem(new DummyItem(String.valueOf(i), cf.get(i).getName(), cf.get(i).getDescription()));
+            addItem(new DummyItem(String.valueOf(i), cf.get(i).getName(), cf.get(i).getHorraire()));
             cf.get(i).afficher();
         }
     }

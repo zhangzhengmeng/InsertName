@@ -3,6 +3,7 @@ package com.projectandroid.ricm4.insertname;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
+import android.os.StrictMode;
 
 
 /**
@@ -33,6 +34,9 @@ public class ItemListActivity extends Activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectDiskReads().detectDiskWrites().detectNetwork().penaltyLog().build());
+
         setContentView(R.layout.activity_item_list);
 
         if (findViewById(R.id.item_detail_container) != null) {
