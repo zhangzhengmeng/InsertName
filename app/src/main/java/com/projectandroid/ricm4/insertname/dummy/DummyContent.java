@@ -27,11 +27,25 @@ public class DummyContent {
      */
     public static Map<String, DummyItem> ITEM_MAP = new HashMap<String, DummyItem>();
 
+    private static List<Cinema> addInformation(String ville) {
+        Actions a = new Actions();
+        List<Cinema> cf = new ArrayList<Cinema>(a.getCinemas(ville));
+        /*for (int i = 0; i < cf.size(); i++) {
+            System.out.println("zbra\n");
+            addItem(new DummyItem(String.valueOf(i), cf.get(i).getName(), cf.get(i).getDescription()));
+            cf.get(i).afficher();
+        }*/
+        return cf;
+    }
+
     static {
         // Add 3 sample items.
-        Actions a = new Actions();
-        String ville = "Grenoble";
-        List<Cinema> cf = new ArrayList<Cinema>(a.getCinemas(ville));
+        /*
+        addItem(new DummyItem("1", "Item 1","d1"));
+        addItem(new DummyItem("2", "Item 2","d2"));
+        addItem(new DummyItem("3", "Item 3","d3"));
+        */
+        List<Cinema> cf = addInformation("Grenoble");
         for (int i = 0; i < cf.size(); i++) {
             addItem(new DummyItem(String.valueOf(i), cf.get(i).getName(), cf.get(i).getDescription()));
             cf.get(i).afficher();

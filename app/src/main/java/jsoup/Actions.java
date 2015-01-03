@@ -1,5 +1,7 @@
 package jsoup;
 
+import android.os.AsyncTask;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,27 +13,13 @@ import org.jsoup.select.Elements;
 
 public class Actions {
 
+    private Exception exception;
+
+    private String url;
 	public List<Cinema> getCinemas(String ville) {
-		try {
-			Document doc = Jsoup.connect(
-					"http://www.google.fr/movies?hl=fr&near=" + ville
-							+ "&q=cinema").get();
-			Elements elems = doc.getElementsByClass("desc");
-			List<Cinema> cinema = new ArrayList<Cinema>();
-			for (Element c : elems) {
-				Cinema cine_tmp = new Cinema();
-				String name_cine = c.getElementsByClass("name").text();
-				String desc_cine = c.getElementsByClass("info").text();
-				cine_tmp.setName(name_cine);
-				cine_tmp.setDescription(desc_cine);
-				cinema.add(cine_tmp);
-			}
-			return cinema;
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
+		ConnectCinema cc = new ConnectCinema();
+        List<Cinema> cinema = cc.launch(ville);
+		return cinema;
 	}
 
 	public List<Horraire> getCinema(String ville, String film) {
