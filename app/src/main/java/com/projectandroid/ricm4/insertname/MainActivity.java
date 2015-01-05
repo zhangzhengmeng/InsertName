@@ -33,13 +33,17 @@ public class MainActivity extends Activity {
 
         btnNextScreen.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
-
-                Intent nextScreen = new Intent(getApplicationContext(),ItemListActivity.class);
+                Intent nextScreen = new Intent(getApplicationContext(), ItemListActivity.class);
                 Intent findCity = new Intent(getApplicationContext(),DummyContent.class);
+                moviename = (EditText) findViewById(R.id.moviename);
+                cityname = (EditText) findViewById(R.id.cityname);
                 findCity.putExtra("ville", cityname.getText().toString());
                 //Sending data to another Activity
                 nextScreen.putExtra("film", moviename.getText().toString());
                 nextScreen.putExtra("ville", cityname.getText().toString());
+                Informations.setFilm(moviename.getText().toString());
+                Informations.setVille(cityname.getText().toString());
+                System.out.println(Informations.getFilm());
                 //startActivity(findCity);
                 startActivity(nextScreen);
             }

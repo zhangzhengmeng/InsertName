@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.projectandroid.ricm4.insertname.Informations;
 import com.projectandroid.ricm4.insertname.MainActivity;
 import jsoup.Actions;
 import jsoup.Cinema;
@@ -36,10 +37,10 @@ import android.content.Intent;
      */
     public static Map<String, DummyItem> ITEM_MAP = new HashMap<String, DummyItem>();
 
-    private static List<Horraire> addInformation(String ville) {
+    private static List<Horraire> addInformation() {
 
         Actions a = new Actions();
-        List<Horraire> cf = new ArrayList<Horraire>(a.getCinema(ville, "The hobbit"));
+        List<Horraire> cf = new ArrayList<Horraire>(a.getCinema(Informations.getVille(), Informations.getFilm()));
         /*for (int i = 0; i < cf.size(); i++) {
             System.out.println("zbra\n");
             addItem(new DummyItem(String.valueOf(i), cf.get(i).getName(), cf.get(i).getDescription()));
@@ -47,7 +48,6 @@ import android.content.Intent;
         }*/
         return cf;
     }
-
 
     static{
       // Add 3 sample items.
@@ -60,7 +60,7 @@ import android.content.Intent;
         String ville = myI.getStringExtra("ville");
         System.out.println("aaaa"+ville);*/
 
-        List<Horraire> cf = addInformation("Grenoble");
+        List<Horraire> cf = addInformation();
         for (int i = 0; i < cf.size(); i++) {
             addItem(new DummyItem(String.valueOf(i), cf.get(i).getName(), cf.get(i).getHorraire()));
             cf.get(i).afficher();
