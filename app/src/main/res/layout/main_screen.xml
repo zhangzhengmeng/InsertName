@@ -9,7 +9,7 @@
         android:layout_height="fill_parent">
 
         <Space
-            android:layout_width="50dp"
+            android:layout_width="20dp"
             android:layout_height="50dp"
             android:layout_column="3" />
     </TableRow>
@@ -32,9 +32,9 @@
         android:layout_height="fill_parent" >
 
         <Space
-            android:layout_width="50dp"
+            android:layout_width="10dp"
             android:layout_height="50dp"
-            android:layout_column="3" />
+            android:layout_column="4" />
     </TableRow>
 
     <TableRow
@@ -42,7 +42,7 @@
         android:layout_height="match_parent">
 
         <EditText
-            android:layout_width="300dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:id="@+id/cityname"
             android:layout_column="3"
@@ -68,7 +68,7 @@
         android:layout_height="fill_parent">
 
         <Space
-            android:layout_width="100dp"
+            android:layout_width="1dp"
             android:layout_height="20dp"
             android:layout_column="2" />
     </TableRow>
@@ -78,7 +78,7 @@
         android:layout_height="match_parent">
 
         <EditText
-            android:layout_width="300dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:id="@+id/moviename"
             android:layout_column="3"
