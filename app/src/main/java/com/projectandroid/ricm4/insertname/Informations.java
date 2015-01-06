@@ -5,8 +5,15 @@ package com.projectandroid.ricm4.insertname;
  */
 public class Informations {
 
+    public enum Fonc{
+        CINEMA,
+        HORAIRE,
+        GPS
+    }
+
     private static String film = "The hobbit";
     private static String ville = "Grenoble";
+    private static Fonc fonc;
 
     public static void setFilm(String f) {
         film = f;
@@ -22,6 +29,14 @@ public class Informations {
 
     public static String getVille() {
         return ville;
+    }
+
+    public static void setFonc(Fonc f) {
+        fonc = f;
+    }
+
+    public static Fonc getFonc() {
+        return fonc;
     }
 
 }

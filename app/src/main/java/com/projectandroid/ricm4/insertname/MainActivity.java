@@ -29,20 +29,16 @@ public class MainActivity extends Activity {
         cityname = (EditText) findViewById(R.id.cityname);
         moviename = (EditText) findViewById(R.id.moviename);
 
-        Button btnNextScreen = (Button) findViewById(R.id.citybutton);
+        Button buttonHoraire = (Button) findViewById(R.id.citybutton);
 
-        btnNextScreen.setOnClickListener(new View.OnClickListener() {
+        buttonHoraire.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
                 Intent nextScreen = new Intent(getApplicationContext(), ItemListActivity.class);
-                Intent findCity = new Intent(getApplicationContext(),DummyContent.class);
                 moviename = (EditText) findViewById(R.id.moviename);
                 cityname = (EditText) findViewById(R.id.cityname);
-                findCity.putExtra("ville", cityname.getText().toString());
-                //Sending data to another Activity
-                nextScreen.putExtra("film", moviename.getText().toString());
-                nextScreen.putExtra("ville", cityname.getText().toString());
                 Informations.setFilm(moviename.getText().toString());
                 Informations.setVille(cityname.getText().toString());
+                Informations.setFonc(Informations.Fonc.HORAIRE);
                 System.out.println(Informations.getFilm());
                 //startActivity(findCity);
                 startActivity(nextScreen);

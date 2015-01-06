@@ -71,6 +71,8 @@ public class ItemListFragment extends ListFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        DummyContent.update();
+
         // TODO: replace with a real list adapter.
         setListAdapter(new ArrayAdapter<DummyContent.DummyItem>(
                 getActivity(),
