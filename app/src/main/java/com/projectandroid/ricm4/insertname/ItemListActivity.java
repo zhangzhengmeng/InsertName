@@ -3,6 +3,8 @@ package com.projectandroid.ricm4.insertname;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
+import android.support.v4.app.NavUtils;
+import android.view.MenuItem;
 import android.os.StrictMode;
 
 
@@ -38,7 +40,7 @@ public class ItemListActivity extends Activity
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectDiskReads().detectDiskWrites().detectNetwork().penaltyLog().build());
 
         setContentView(R.layout.activity_item_list);
-
+        getActionBar().setDisplayHomeAsUpEnabled(true);
         if (findViewById(R.id.item_detail_container) != null) {
             // The detail container view will be present only in the
             // large-screen layouts (res/values-large and
@@ -56,6 +58,16 @@ public class ItemListActivity extends Activity
         // TODO: If exposing deep links into your app, handle intents here.
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
     /**
      * Callback method from {@link ItemListFragment.Callbacks}
      * indicating that the item with the given ID was selected.
