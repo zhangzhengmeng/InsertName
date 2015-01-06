@@ -56,6 +56,15 @@ import android.content.Intent;
                 cf.get(i).afficher();
             }
         }
+
+        if (Informations.getFonc() == Informations.Fonc.GPS) {
+            Actions a = new Actions();
+            List<Cinema> cf = new ArrayList<Cinema>(a.getCinemas(Informations.getVille()));
+            for (int i = 0; i < cf.size(); i++) {
+                addItem(new DummyItem(String.valueOf(i), cf.get(i).getName(), cf.get(i).getDescription()));
+                cf.get(i).afficher();
+            }
+        }
     }
 
     private static void addItem(DummyItem item) {

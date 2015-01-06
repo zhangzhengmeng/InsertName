@@ -19,7 +19,9 @@ import android.widget.EditText;
 import com.projectandroid.ricm4.insertname.dummy.DummyContent;
 
 import java.io.IOException;
+import java.text.Normalizer;
 import java.util.List;
+import java.util.regex.Pattern;
 
 
 /**
@@ -51,9 +53,6 @@ public class MainActivity extends Activity {
         location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         //get address
         geocoder = new Geocoder(this);
-        myCityName="";
-        addresses=null;
-        address=null;
         setAddress(location);
         setName();
         //trace location
@@ -95,8 +94,9 @@ public class MainActivity extends Activity {
                 Intent nextScreen = new Intent(getApplicationContext(), ItemListActivity.class);
 
                 cityname = (EditText) findViewById(R.id.cityname);
-
-                Informations.setVille(cityname.getText().toString());
+                String testCityname = sansAccents(cityname.getText().toString());
+                //Informations.setVille(cityname.getText().toString());
+                Informations.setVille(testCityname);
                 Informations.setFonc(Informations.Fonc.CINEMA);
 
                 startActivity(nextScreen);
@@ -106,9 +106,8 @@ public class MainActivity extends Activity {
         buttonGPS.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
                 Intent nextScreen = new Intent(getApplicationContext(), ItemListActivity.class);
-
                 Informations.setVille(myCityName);
-                Informations.setFonc(Informations.Fonc.CINEMA);
+                Informations.setFonc(Informations.Fonc.GPS);
                 startActivity(nextScreen);
             }
         });
@@ -125,7 +124,14 @@ public class MainActivity extends Activity {
         }
     }
     private void setName(){
-        if(address != null){myCityName=address.getLocality();}
+        if(address != null){
+            myCityName=address.getLocality();
+            sansAccents(myCityName);
+        }
         else{myCityName="No GPS";}
     }
+     public String sansAccents(String input) {
+        return Normalizer.normalize(input, Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
+     }
+
 }

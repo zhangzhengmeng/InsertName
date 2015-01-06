@@ -7,6 +7,8 @@ import android.support.v4.app.NavUtils;
 import android.view.MenuItem;
 import android.os.StrictMode;
 
+import com.projectandroid.ricm4.insertname.Informations;
+
 
 /**
  * An activity representing a list of Items. This activity
@@ -89,9 +91,16 @@ public class ItemListActivity extends Activity
         } else {
             // In single-pane mode, simply start the detail activity
             // for the selected item ID.
-            Intent detailIntent = new Intent(this, ItemDetailActivity.class);
-            detailIntent.putExtra(ItemDetailFragment.ARG_ITEM_ID, id);
-            startActivity(detailIntent);
+            if (Informations.getFonc() != Informations.Fonc.GPS) {
+                Intent detailIntent = new Intent(this, ItemDetailActivity.class);
+                detailIntent.putExtra(ItemDetailFragment.ARG_ITEM_ID, id);
+                startActivity(detailIntent);
+            }
+            else {
+                Intent detailIntent = new Intent(this, ItemDetailActivity.class);
+                detailIntent.putExtra(ItemDetailFragment.ARG_ITEM_ID, id);
+                startActivity(detailIntent);
+            }
         }
     }
 }
