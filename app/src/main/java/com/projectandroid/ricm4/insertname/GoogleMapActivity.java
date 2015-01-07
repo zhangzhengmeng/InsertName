@@ -10,10 +10,14 @@ import android.os.Bundle;
  */
 public class GoogleMapActivity extends Activity {
 
+    //private MapViewiew mapView;
+
     @Override 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map);
+        //mapView = (MapView) this.findViewById(R.id.mapView);
+        //mapView.setBuiltInZoomControls(true);
     }
 
     //@Override

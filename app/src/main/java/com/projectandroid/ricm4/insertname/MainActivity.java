@@ -108,7 +108,7 @@ public class MainActivity extends Activity {
                 Intent nextScreen = new Intent(getApplicationContext(), ItemListActivity.class);
 
                 Informations.setVille(myCityName);
-                Informations.setFonc(Informations.Fonc.CINEMA);
+                Informations.setFonc(Informations.Fonc.GPS);
                 startActivity(nextScreen);
             }
         });
@@ -127,5 +127,6 @@ public class MainActivity extends Activity {
     private void setName(){
         if(address != null){myCityName=address.getLocality();}
         else{myCityName="No GPS";}
+        System.out.println(myCityName + "\n" + address);
     }
 }

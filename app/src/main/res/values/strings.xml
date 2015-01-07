@@ -3,5 +3,6 @@
 
     <string name="app_name">InsertName!</string>
     <string name="title_item_detail">Detail</string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>

@@ -1,5 +1,7 @@
 package com.projectandroid.ricm4.insertname;
 
+import java.text.Normalizer;
+
 /**
  * Created by hugo on 05/01/15.
  */
@@ -20,7 +22,8 @@ public class Informations {
     }
 
     public static String getFilm() {
-        return film;
+        String tmp = Normalizer.normalize(film, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
+        return tmp;
     }
 
     public static void setVille(String v) {
@@ -28,7 +31,8 @@ public class Informations {
     }
 
     public static String getVille() {
-        return ville;
+        String tmp = Normalizer.normalize(ville, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
+        return tmp;
     }
 
     public static void setFonc(Fonc f) {

@@ -47,8 +47,7 @@ import android.content.Intent;
                 cf.get(i).afficher();
             }
         }
-
-        if (Informations.getFonc() == Informations.Fonc.CINEMA) {
+        else {
             Actions a = new Actions();
             List<Cinema> cf = new ArrayList<Cinema>(a.getCinemas(Informations.getVille()));
             for (int i = 0; i < cf.size(); i++) {
